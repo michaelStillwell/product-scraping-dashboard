@@ -1,0 +1,9 @@
+
+the overall design for the toggling of products could be something like this:
+
+- queries.json: list of queries, what sites they're for and if they're active
+- products.json: list of results for the dashboard to display
+-
+
+also probably just ip restrict editing access because would be nice to have it
+displayed but don't want anyone messing with it

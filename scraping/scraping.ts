@@ -8,20 +8,17 @@ export interface Product {
 }
 
 // NOTE: this is obtuse but don't care initially
-function scrape() {
+async function scrape() {
   console.log("I am scraping...");
 
-  const products = Bun.file("./product.json");
-  const writer = products.writer();
+  const products = Bun.file("./products.json");
 
   // need to make this more generic
-  const { resolver } = require("./resolvers/moonlander");
-  const moonlander = resolver();
+  const { resolver } = require("./resolvers/Ebay");
+  const ebay = await resolver();
 
-  const data = [...moonlander];
-  writer.write(JSON.stringify(data, null, 2));
-  writer.flush();
-  writer.end();
+  const data = [...ebay];
+  Bun.write(products, JSON.stringify(data, null, 2));
 }
 
 scrape();

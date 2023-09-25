@@ -1,10 +1,30 @@
+---
+
+
+---
+
+[ ] implement scraping with the query in queries based in the site
+[ ] implement auto reload of the table when you update a query
+    - will be tricky because the scraping will probably take a while
+    might be better to just say "added, come back later for update"
+
+
+
 [ ] implement scraping for the different products
+
 [ ] come up with more generic way to run through the products
+
 [ ] turn off products
-[ ] ? create new products from the dashboard
+[ ] figure out hosting
+[ ] setup git
+
+
+
+---
+
+[x] implement query creation
+[x] ? create new products from the dashboard
     - would be kinda cool, make the state be a couple files with a bool value
     and some enums for different sites that have resolvers and just need a
     query value
-[ ] style the table
-[ ] figure out hosting
-[ ] setup git
+[x] style the table
