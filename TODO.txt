@@ -3,20 +3,33 @@
 
 ---
 
-[ ] implement scraping with the query in queries based in the site
+
+# Scraping
+
+[ ] ! come up with more generic way to run through the products
+[ ] ! implement scraping with the query in queries based in the site
+
+
+# Dashboard
+
+[ ] ? "Run scraping" button
+    - is protected and manually runs the scraping script and updates
+    the dashboard
 [ ] implement auto reload of the table when you update a query
     - will be tricky because the scraping will probably take a while
     might be better to just say "added, come back later for update"
+[ ] toggle queries
+    [ ] add new field to model
+    [ ] only show the values for the queries that are toggled on
 
 
 
-[ ] implement scraping for the different products
+# Hosting
 
-[ ] come up with more generic way to run through the products
-
-[ ] turn off products
 [ ] figure out hosting
-[ ] setup git
+    - might either do in house with no access or on a simple site and
+    do an ip whitelist only for mine, dont need to complicate things
+    for this
 
 
 
@@ -28,3 +41,4 @@
     and some enums for different sites that have resolvers and just need a
     query value
 [x] style the table
+[x] setup git
