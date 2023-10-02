@@ -16,7 +16,7 @@
     "bun-types": "^1.0.2"
   },
   "name": "scraping-dashboard",
-  "module": "index.ts",
+  "module": "server.ts",
   "type": "module",
   "scripts": {
     "dev:dashboard": "cd dashboard && bun run server.ts",
