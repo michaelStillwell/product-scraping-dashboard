@@ -8,6 +8,7 @@
 
 [ ] ! come up with more generic way to run through the products
 [ ] ! implement scraping with the query in queries based in the site
+[ ] better refilling
 
 
 # Dashboard

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-theme="dracula">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.6"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .collapse {
+        visibility: visible !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main className="container m-auto">
+      <h1 className="text-xl">Products I am interested in</h1>
+
+      <form hx-post="/actions/queries" hx-swap="none">
+        <div>
+          <input
+            class="input"
+            type="text"
+            name="value"
+            placeholder="Enter your query value..."
+          />
+
+          <select
+            class="select"
+            name="site"
+            hx-get="/actions/sites"
+            hx-trigger="load"
+            hx-swap="beforeend"
+          >
+            <option value="" disabled selected>Select site</option>
+          </select>
+
+          <button type="submit">Create</button>
+        </div>
+      </form>
+
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+
+        <tbody
+          id="table-data"
+          hx-get="/actions/products"
+          hx-trigger="load"
+        ></tbody>
+      </table>
+
+      <div tabindex="0" class="collapse bg-base-200">
+        <div class="collapse-title text-xl font-medium">Queries</div>
+        <div class="collapse-content">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Query</th>
+                <th>Site</th>
+                <th>Active</th>
+              </tr>
+            </thead>
+
+            <tbody
+              id="table-data"
+              hx-get="/actions/queries"
+              hx-trigger="load"
+            ></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

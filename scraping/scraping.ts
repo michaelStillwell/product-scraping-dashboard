@@ -1,5 +1,9 @@
 // TODO: implement the scraping
 
+import { deleteProducts, insertProducts, selectProducts } from "db";
+import { resolver as ebayResolver } from "./resolvers/Ebay";
+import { resolver as backmarketResolver } from "./resolvers/BackMarket";
+
 export interface Product {
   name: string;
   price?: number;
@@ -11,14 +15,24 @@ export interface Product {
 async function scrape() {
   console.log("I am scraping...");
 
-  const products = Bun.file("./products.json");
+  // TODO: figure a better way to clear
+  const products = await selectProducts();
+  for (let product of products) {
+    await deleteProducts(product.id);
+  }
 
   // need to make this more generic
-  const { resolver } = require("./resolvers/Ebay");
-  const ebay = await resolver();
+  // const ebay = await ebayResolver();
+  // const amazon = await amazonResolver();
+  const backmarket = await backmarketResolver();
 
-  const data = [...ebay];
-  Bun.write(products, JSON.stringify(data, null, 2));
+  const data = [
+    //...ebay, //...amazon,
+    ...backmarket,
+  ];
+  for (let product of data) {
+    await insertProducts(product);
+  }
 }
 
 scrape();
